@@ -19,3 +19,6 @@ global $wpdb;
 
 // Tables
 $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}bbv_profile_view_log" );
+
+// Delete options
+$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name LIKE 'buddyview\_%';" );

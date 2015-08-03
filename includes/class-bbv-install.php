@@ -69,7 +69,7 @@ class BBV_Install {
 		$current_db_version = get_option( 'buddyview_db_version', null );
 		//$major_bbv_version   = substr( BBV()->version, 0, strrpos( BBV()->version, '.' ) );
 
-		if ( ! is_null( $current_db_version ) && version_compare( $current_db_version, max( array_keys( self::$db_updates ) ), '<' ) ) {
+		if ( ! is_null( $current_db_version ) && ! empty( self::$db_updates ) && version_compare( $current_db_version, max( array_keys( self::$db_updates ) ), '<' ) ) {
 
 		} else {
 			self::update_db_version();
@@ -152,7 +152,7 @@ CREATE TABLE {$wpdb->prefix}bbv_profile_view_log (
   view_id bigint(20) NOT NULL auto_increment,
   user_id bigint(20) NOT NULL,
   viwer_id bigint(20) NOT NULL,
-  last_view datetime NULL default null,
+  last_view datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (view_id),
   KEY user_id (user_id),
   KEY last_view (last_view)
