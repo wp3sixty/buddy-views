@@ -56,7 +56,6 @@ class BBV_Install {
 	 * Install BBV
 	 */
 	public static function install() {
-		global $wpdb;
 
 		if ( ! defined( 'BBV_INSTALLING' ) ) {
 			define( 'BBV_INSTALLING', true );

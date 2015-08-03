@@ -89,7 +89,7 @@ if ( ! class_exists( 'BuddyViews' ) ) :
 		 * @since 1.0
 		 */
 		private function init_hooks() {
-
+			register_activation_hook( __FILE__, array( 'BBV_Install', 'install' ) );
 		}
 
 		/**
@@ -138,6 +138,7 @@ if ( ! class_exists( 'BuddyViews' ) ) :
 		 */
 		public function includes() {
 
+			include_once( 'includes/class-bbv-install.php' );
 
 			if ( $this->is_request( 'admin' ) ) {
 			}
