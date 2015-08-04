@@ -3,7 +3,7 @@
  * Plugin Name: Buddy View
  * Description: Buddypress profile view counters
  * Version: 1.0
- * Author: The Buddy View Contributor
+ * Author: The Buddy View Contributors
  * Author URI: https://github.com/mehulkaklotar/buddy-views/graphs/contributors
  * Requires at least: 4.1
  * Tested up to: 4.2
