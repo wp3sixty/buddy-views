@@ -14,6 +14,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
+if ( ! apply_filters( 'bbv_uninstall', true ) )
+	exit; 
+
 global $wpdb;
 
 
