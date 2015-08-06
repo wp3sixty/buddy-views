@@ -3,5 +3,5 @@ CREATE TABLE %s (
   member_id bigint(20) NOT NULL,
   viwer_id bigint(20) NOT NULL,
   last_view datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (id),
+  PRIMARY KEY  (id)
 )

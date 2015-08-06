@@ -26,14 +26,14 @@ if ( ! class_exists( 'Buddy_Views_Install' ) ) {
 	class Buddy_Views_Install {
 
 		public function __construct() {
-			Buddy_Views::$loader->add_action( 'admin_init', $this, 'database_update' );
+			Buddy_Views::$loader->add_action( 'admin_init', $this, 'database_update', 10, 0 );
 		}
 
 		/**
 		 * @since    1.0.0
 		 * @author   Dipesh <dipesh.kakadiya111@gmail.com>
 		 */
-		public function database_update(){
+		function database_update( ){
 			$updateDB = new RT_DB_Update( trailingslashit( BUDDY_VIEWS_PATH ) . 'buddy-views.php', trailingslashit( BUDDY_VIEWS_PATH . 'admin/schema/' ) );
 			$updateDB->do_upgrade();
 		}

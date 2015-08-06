@@ -74,7 +74,7 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 		 */
 		public function __clone() {
 			// Cloning instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', RTBIZ_TEXT_DOMAIN ), '1.6' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', BUDDY_VIEWS_TEXT_DOMAIN ), BUDDY_VIEWS_VERSION );
 		}
 
 		/**
@@ -86,7 +86,7 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 		 */
 		public function __wakeup() {
 			// Unserializing instances of the class is forbidden
-			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', RTBIZ_TEXT_DOMAIN ), '1.6' );
+			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', BUDDY_VIEWS_TEXT_DOMAIN ), BUDDY_VIEWS_VERSION );
 		}
 
 		public function __construct() {
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 			$this->load_dependencies();
 			$this->set_locale();
 			$this->define_admin_hooks();
-			//$this->define_public_hooks();
+			$this->define_public_hooks();
 
 			$this->run();
 
@@ -153,14 +153,13 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 			 * The class responsible for defining all actions that occur in the public-facing
 			 * side of the site.
 			 */
-			require_once BUDDY_VIEWS_PATH . 'admin/partials/helper/buddy-view-helper.php';
-			require_once BUDDY_VIEWS_PATH . 'includes/lib/rt-lib.php';
+			require_once BUDDY_VIEWS_PATH . 'admin/partials/helper/buddy-views-helper.php';
 
-			new RT_WP_Autoload( RTBIZ_HD_PATH . 'admin/' );
-			new RT_WP_Autoload( RTBIZ_HD_PATH . 'admin/partials' );
-			new RT_WP_Autoload( RTBIZ_HD_PATH . 'admin/partials/models/' );
-			new RT_WP_Autoload( RTBIZ_HD_PATH . 'public/' );
-			new RT_WP_Autoload( RTBIZ_HD_PATH . 'public/partials' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/partials/' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/partials/models/' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'public/' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'public/partials/' );
 
 			self::$loader = new Buddy_Views_Loader();
 
@@ -177,11 +176,9 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 		 */
 		private function set_locale() {
 
-			$plugin_i18n = new Buddy_Views_i18n( BUDDY_VIEWS_TEXT_DOMAIN );
-			$plugin_i18n->set_domain( ); // give plugin name as argument
-
-			self::$loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+			$plugin_i18n = new Buddy_Views_i18n();
+			$plugin_i18n->set_domain( BUDDY_VIEWS_TEXT_DOMAIN );
+			$plugin_i18n->load_plugin_textdomain( );
 		}
 
 		/**
@@ -194,8 +191,6 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 		private function define_admin_hooks() {
 
 			$plugin_admin = new Buddy_Views_Admin( );
-
-			self::$loader->add_action( 'admin_init', $plugin_admin, 'database_update' );
 
 			self::$loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 			self::$loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );

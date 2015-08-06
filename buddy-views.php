@@ -96,6 +96,8 @@ register_deactivation_hook( BUDDY_VIEWS_PLUGIN_FILE, 'deactivate_plugin_name' );
  */
 require BUDDY_VIEWS_PATH . 'includes/class-buddy-views.php';
 
+require BUDDY_VIEWS_PATH . 'includes/lib/rt-lib.php';
+
 /**
  * Begins execution of the plugin.
  *

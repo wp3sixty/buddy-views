@@ -42,9 +42,6 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 
 		}
 
-
-
-
 	}
 }
 
