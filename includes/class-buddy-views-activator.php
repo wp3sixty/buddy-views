@@ -33,8 +33,6 @@ if ( ! class_exists( 'Buddy_Views_Activator' ) ) {
 		 */
 		public static function activate() {
 
-
-
 		}
 
 	}
