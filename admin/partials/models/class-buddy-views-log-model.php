@@ -29,7 +29,7 @@ if ( ! class_exists( 'Buddy_Views_Log_Model' ) ) {
 		 * @since    1.0.0
 		 * @author   Dipesh <dipesh.kakadiya111@gmail.com>
 		 */
-		function add_ticket( $data ) {
+		function add_view_log( $data ) {
 			return parent::insert( $data );
 		}
 
@@ -39,7 +39,7 @@ if ( ! class_exists( 'Buddy_Views_Log_Model' ) ) {
 		 * @since    1.0.0
 		 * @author   Dipesh <dipesh.kakadiya111@gmail.com>
 		 */
-		function update_ticket( $data, $where ) {
+		function update_view_log( $data, $where ) {
 			return parent::update( $data, $where );
 		}
 
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Buddy_Views_Log_Model' ) ) {
 		 * @since    1.0.0
 		 * @author   Dipesh <dipesh.kakadiya111@gmail.com>
 		 */
-		function delete_ticket( $where ) {
+		function delete_view_log( $where ) {
 			return parent::delete( $where );
 		}
 
