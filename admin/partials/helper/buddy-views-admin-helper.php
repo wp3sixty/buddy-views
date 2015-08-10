@@ -38,3 +38,58 @@ if ( ! function_exists( 'buddy_views_setcookie' ) ) {
 	}
 }
 
+if ( ! function_exists( 'buddy_views_getcookie' ) ) {
+
+	/**
+	 * @param $name
+	 *
+	 * @return null
+	 */
+	function buddy_views_getcookie( $name ) {
+		if ( ! empty( $_COOKIE[ $name ] ) ) {
+			return $_COOKIE[ $name ];
+		}
+		return null;
+	}
+
+}
+
+if ( ! function_exists( 'buddy_views_get_user_ip' ) ) {
+
+	/**
+	 * @return null
+	 */
+	function buddy_views_get_user_ip () {
+
+		if ( ! empty( $_SERVER['SERVER_ADDR'] ) ) {
+			return $_SERVER['SERVER_ADDR'];
+		}
+		return null;
+
+	}
+
+}
+
+if ( ! function_exists( 'buddy_views_compare_timestamp' ) ) {
+
+	/**
+	 * @param $compare_timestamp
+	 * @param bool|false $current_timestamp
+	 *
+	 * @return bool
+	 */
+	function buddy_views_compare_timestamp ( $compare_timestamp, $current_timestamp = false ) {
+
+		if ( ! $current_timestamp ) {
+			$current_timestamp = current_time( 'timestamp' );
+		}
+
+		if ( ( $current_timestamp - $compare_timestamp ) > 24 * 60 * 60 ) {
+			return false;
+		}
+
+		return true;
+	}
+
+}
+

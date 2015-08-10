@@ -25,8 +25,9 @@ if ( ! class_exists( 'Buddy_Views_Admin' ) ) {
 
 		public function __construct(  ) {
 
-			global $bv_install;
+			global $bv_install, $bv_views_log_model;
 			$bv_install = new Buddy_Views_Install();
+			$bv_views_log_model = new Buddy_Views_Log_Model();
 
 		}
 

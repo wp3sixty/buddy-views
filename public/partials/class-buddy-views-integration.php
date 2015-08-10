@@ -34,10 +34,38 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 		 * @author   Dipesh <dipesh.kakadiya111@gmail.com>
 		 */
 		public function record_view_log() {
+
+			global $bv_views_log_model;
+
+			$already_viewed = false;
+
 			$displayed_user_id = bp_displayed_user_id();
+			$current_user_id = get_current_user_id();
+			$viewer_ip = buddy_views_get_user_ip();
 
-			if ( get_current_user_id() != $displayed_user_id ) {
+			$where = array(
+				'member_id' => $displayed_user_id,
+				'viewer_id' => $current_user_id,
+				'viewer_ip' => $viewer_ip,
+			);
 
+			$is_log_exists = $bv_views_log_model->get( $where, false, 1, 'last_view desc' );
+
+			if ( ! empty( $is_log_exists ) ) {
+				$timestamp = ! empty( $is_log_exists[0]->last_view ) ? strtotime( $is_log_exists[0]->last_view ) : current_time( 'timestamp' );
+				$already_viewed = buddy_views_compare_timestamp( $timestamp );
+			}
+
+			// Check for current user is not the same user as displayed user
+			if ( $current_user_id != $displayed_user_id && ! $already_viewed ) {
+
+				$data = array(
+					'member_id' => $displayed_user_id,
+					'viewer_id' => $current_user_id,
+					'viewer_ip' => $viewer_ip,
+				);
+
+				$bv_views_log_model->add_view_log( $data );
 			}
 
 		}
