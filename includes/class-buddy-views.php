@@ -153,7 +153,7 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 			 * The class responsible for defining all actions that occur in the public-facing
 			 * side of the site.
 			 */
-			require_once BUDDY_VIEWS_PATH . 'admin/partials/helper/buddy-views-helper.php';
+			require_once BUDDY_VIEWS_PATH . 'admin/partials/helper/buddy-views-admin-helper.php';
 
 			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/' );
 			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/partials/' );

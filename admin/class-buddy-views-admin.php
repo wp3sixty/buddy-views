@@ -25,9 +25,9 @@ if ( ! class_exists( 'Buddy_Views_Admin' ) ) {
 
 		public function __construct(  ) {
 
-			global $bv_install, $bv_integration;
+			global $bv_install;
 			$bv_install = new Buddy_Views_Install();
-			$bv_integration = new Buddy_Views_Integration();
+
 		}
 
 		/**

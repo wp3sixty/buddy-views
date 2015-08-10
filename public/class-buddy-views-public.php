@@ -23,7 +23,8 @@ if ( ! class_exists( 'Buddy_Views_Public' ) ) {
 	class Buddy_Views_Public {
 
 		public function __construct() {
-
+			global $bv_integration;
+			$bv_integration = new Buddy_Views_Integration();
 		}
 
 		/**
