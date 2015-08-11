@@ -1,4 +1,5 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+.bv-view-count {
+	display: block;
+	font-size: small;
+	line-height: 1.5;
+}

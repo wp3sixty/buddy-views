@@ -25,6 +25,7 @@ if ( ! class_exists( 'Buddy_Views_Public' ) ) {
 		public function __construct() {
 			global $bv_integration;
 			$bv_integration = new Buddy_Views_Integration();
+			$this->enqueue_styles();
 		}
 
 		/**
@@ -47,7 +48,7 @@ if ( ! class_exists( 'Buddy_Views_Public' ) ) {
 			 * class.
 			 */
 
-			wp_enqueue_style( BUDDY_VIEWS_TEXT_DOMAIN, BUDDY_VIEWS_PATH . 'public/css/buddy-views-public.css', array(), BUDDY_VIEWS_VERSION, 'all' );
+			wp_enqueue_style( BUDDY_VIEWS_TEXT_DOMAIN, BUDDY_VIEWS_URL . 'public/css/buddy-views-public.css', array(), BUDDY_VIEWS_VERSION, 'all' );
 
 		}
 
@@ -71,7 +72,7 @@ if ( ! class_exists( 'Buddy_Views_Public' ) ) {
 			 * class.
 			 */
 
-			wp_enqueue_script( BUDDY_VIEWS_TEXT_DOMAIN, BUDDY_VIEWS_PATH . 'public/js/buddy-views-public.js', array( 'jquery' ), BUDDY_VIEWS_VERSION, false );
+			wp_enqueue_script( BUDDY_VIEWS_TEXT_DOMAIN, BUDDY_VIEWS_URL . 'public/js/buddy-views-public.js', array( 'jquery' ), BUDDY_VIEWS_VERSION, false );
 
 		}
 

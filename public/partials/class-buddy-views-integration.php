@@ -27,9 +27,12 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 
 		public function __construct() {
 			Buddy_Views::$loader->add_action( 'bp_after_member_header', $this, 'record_view_log' );
+			Buddy_Views::$loader->add_action( 'bp_before_member_header_meta', $this, 'show_view_counter' );
 		}
 
 		/**
+		 * Record view log on profile visit
+		 *
 		 * @since    1.0.0
 		 * @author   Dipesh <dipesh.kakadiya111@gmail.com>
 		 */
@@ -68,6 +71,30 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 				$bv_views_log_model->add_view_log( $data );
 			}
 
+		}
+
+		/**
+		 * Show view counter for member on member page
+		 *
+		 * @since    1.0.0
+		 * @author   Mehul <mehul.kaklotar@gmail.com>
+		 */
+		public function show_view_counter () {
+
+			global $bv_views_log_model;
+
+			$displayed_user_id = bp_displayed_user_id();
+
+			$where = array(
+				'member_id' => $displayed_user_id,
+			);
+
+			$views = $bv_views_log_model->get( $where );
+
+			if ( ! empty( $views ) ) {
+				$views_count = count( $views );
+				?><span class="bv-view-count"><?php echo sprintf( _n( '%s view', '%s views', $views_count, BUDDY_VIEWS_TEXT_DOMAIN ), $views_count ); ?></span><?php
+			}
 		}
 
 	}
