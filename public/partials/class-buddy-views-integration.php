@@ -140,6 +140,12 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 		public function xprofile_screen_profile_views() {
 			bp_core_load_template( apply_filters( 'xprofile_screen_profile_views', 'members/single/' ) );
 			add_action( 'bp_template_content', array( $this, 'bp_profile_views_template_content' ) );
+			global $bv_reports, $profile_view_report;
+
+
+			$profile_view_report = new Rt_Reports( 'profile-view' );
+			$bv_reports = BV_Reports_Loader::factory();
+
 		}
 
 		public function bp_profile_views_template_content() {

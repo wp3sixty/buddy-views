@@ -98,6 +98,9 @@ require BUDDY_VIEWS_PATH . 'includes/class-buddy-views.php';
 
 require BUDDY_VIEWS_PATH . 'includes/lib/rt-lib.php';
 
+include_once( 'includes/bv-view-report-functions.php' );
+include_once( 'includes/class-bv-reports-loader.php' );
+
 /**
  * Begins execution of the plugin.
  *

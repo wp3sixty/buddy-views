@@ -243,6 +243,7 @@ if ( ! class_exists( 'Rt_Reports' ) ) {
 								});
 								var chart_data = google.visualization.arrayToDataTable(chart_data_source);
 
+								console.log( chart_data );
 								chart_title = '';
 								if ( chart.options !== null && chart.options !== undefined && chart.options.title !== undefined && chart.options.title !== null && chart.options.title !== '' ) {
 									chart_title = chart.options.title;
