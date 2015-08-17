@@ -25,7 +25,6 @@ if ( ! class_exists( 'Buddy_Views_Public' ) ) {
 		public function __construct() {
 			global $bv_integration;
 			$bv_integration = new Buddy_Views_Integration();
-			add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ) );
 		}
 
 		/**
@@ -34,7 +33,7 @@ if ( ! class_exists( 'Buddy_Views_Public' ) ) {
 		 * @since    1.0.0
 		 * @author   Dipesh <dipesh.kakadiya111@gmail.com>
 		 */
-		public static function enqueue_styles() {
+		public function enqueue_styles() {
 
 			/**
 			 * This function is provided for demonstration purposes only.
