@@ -100,6 +100,7 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 		}
 
 		public function profile_subnav_item() {
+			global $bp, $wp_admin_bar;;
 
 			$slug = bp_get_profile_slug();
 
@@ -116,13 +117,33 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 
 			$subnav_args = array(
 				'name'            => _x( 'Profile View', 'Profile header sub menu', 'bv' ),
-				'slug'            => 'profile-view',
+				'slug'            => 'my-profile-view',
 				'parent_url'      => $friends_link,
 				'parent_slug'     => $slug,
-				'screen_function' => 'xprofile_screen_profile_views'
+				'screen_function' => array( $this, 'xprofile_screen_profile_views' )
 			);
 
+
+			$admin_nav = array(
+				'parent' => 'my-account-' . $bp->profile->id,
+				'id'     => 'my-account-' . $bp->profile->id . '-my-profile-view',
+				'title'  => _x( 'My profile views', 'My Account Friends menu sub nav', 'bv' ),
+				'href'   => trailingslashit( $friends_link . 'my-profile-view' )
+			);
+
+
 			bp_core_new_subnav_item( $subnav_args );
+
+			$wp_admin_bar->add_menu( $admin_nav );
+		}
+
+		public function xprofile_screen_profile_views() {
+			bp_core_load_template( apply_filters( 'xprofile_screen_profile_views', 'members/single/' ) );
+			add_action( 'bp_template_content', array( $this, 'bp_profile_views_template_content' ) );
+		}
+
+		public function bp_profile_views_template_content() {
+			include_once( BUDDY_VIEWS_PATH . '/templates/bv-profile-view-chart.php' );
 		}
 
 	}
