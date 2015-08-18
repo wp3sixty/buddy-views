@@ -10,4 +10,7 @@ $bv_reports->print_scripts();
 
 <?php
 $chart = bv_prepare_view_chart( $user_id );
-$profile_view_report->render_chart( array( $chart ) );
+
+if ( ! empty( $chart ) ) {
+	$profile_view_report->render_chart( array( $chart ) );
+}
