@@ -155,6 +155,11 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 			 */
 			require_once BUDDY_VIEWS_PATH . 'admin/partials/helper/buddy-views-admin-helper.php';
 
+			/**
+			 * This file responsible for defining all actions that occur in buddy views widgets
+			 */
+			require_once BUDDY_VIEWS_PATH . 'admin/partials/buddy-views-widget-functions.php';
+
 			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/' );
 			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/partials/' );
 			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/partials/models/' );
