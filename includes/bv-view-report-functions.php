@@ -14,7 +14,7 @@ function bv_prepare_view_chart( $user_id ) {
 	$rows        = array();
 
 
-	$result = $wpdb->get_results( "SELECT COUNT(*) AS view_count, DATE(last_view) view_date FROM wp_rt_buddy_views_log WHERE member_id = {$user_id} GROUP BY DATE(last_view)" );
+	$result = $wpdb->get_results( "SELECT COUNT(*) AS view_count, DATE(last_view) view_date FROM {$wpdb->prefix}rt_buddy_views_log WHERE member_id = {$user_id} GROUP BY DATE(last_view)" );
 
 	foreach ( $result as $data ) {
 
@@ -33,7 +33,6 @@ function bv_prepare_view_chart( $user_id ) {
 		'data_source' => $data_source,
 		'dom_element' => 'bv_views_' . $user_id,
 		'options'     => array(
-			//'vAxis' => json_encode( array( 'format' => '#', 'gridlines' => array( 'color' => 'transparent' ) ) ),
 			'pointSize' => '5',
 		)
 	);
