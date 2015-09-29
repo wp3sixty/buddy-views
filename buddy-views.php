@@ -16,7 +16,7 @@
  * Plugin Name:       Buddy Views
  * Plugin URI:        https://github.com/LittleMonks/buddy-views
  * Description:       BuddyPress Profile views
- * Version:           1.0.0 (beta)
+ * Version:           1.0.0
  * Author:            littlemonks, dipesh.kakadiya, mehulkaklotar, pareshradadiya, utkarshpatel
  * Author URI:        https://github.com/LittleMonks
  * License:           GPL-2.0+
