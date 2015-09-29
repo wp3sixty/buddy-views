@@ -31,5 +31,5 @@ An answer to that question.
 
 == Changelog ==
 
-= 1.0.0 (Beta) =
-* Initial release
+= 1.0.0 (beta) =
+* Initial beta release
