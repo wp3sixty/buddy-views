@@ -9,7 +9,7 @@
  * @since      1.0.0
  *
  * @package    buddy-views
- * @subpackage buddy-views/admin/partials
+ * @subpackage buddy-views/admin/classes
  */
 
 if ( ! class_exists( 'Buddy_Views_Install' ) ) {

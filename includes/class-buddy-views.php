@@ -153,18 +153,18 @@ if ( ! class_exists( 'Buddy_Views' ) ) {
 			 * The class responsible for defining all actions that occur in the public-facing
 			 * side of the site.
 			 */
-			require_once BUDDY_VIEWS_PATH . 'admin/partials/helper/buddy-views-admin-helper.php';
+			require_once BUDDY_VIEWS_PATH . 'admin/helper/buddy-views-admin-helper.php';
 
 			/**
 			 * This file responsible for defining all actions that occur in buddy views widgets
 			 */
-			require_once BUDDY_VIEWS_PATH . 'admin/partials/buddy-views-widget-functions.php';
+			require_once BUDDY_VIEWS_PATH . 'admin/classes/buddy-views-widget-functions.php';
 
 			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/' );
-			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/partials/' );
-			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/partials/models/' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/classes/' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'admin/classes/models/' );
 			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'public/' );
-			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'public/partials/' );
+			new RT_WP_Autoload( BUDDY_VIEWS_PATH . 'public/classes/' );
 
 			self::$loader = new Buddy_Views_Loader();
 
