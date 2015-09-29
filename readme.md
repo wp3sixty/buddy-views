@@ -32,7 +32,7 @@ An answer to that question.
 
 ## Changelog ##
 
-### 1.0.0 (beta) ###
+### 1.0.0 ###
 * Initial beta release
 
 
