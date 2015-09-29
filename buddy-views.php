@@ -8,14 +8,14 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://example.com
+ * @link              https://github.com/LittleMonks/buddy-views
  * @since             1.0.0
  * @package           buddy-views
  *
  * @wordpress-plugin
  * Plugin Name:       Buddy Views
  * Plugin URI:        https://github.com/LittleMonks/buddy-views
- * Description:       BuudyPress Profile views
+ * Description:       BuddyPress Profile views
  * Version:           1.0.0
  * Author:            LittleMonks
  * Author URI:        https://github.com/LittleMonks
@@ -98,6 +98,9 @@ require BUDDY_VIEWS_PATH . 'includes/class-buddy-views.php';
 
 require BUDDY_VIEWS_PATH . 'includes/lib/rt-lib.php';
 
+/**
+ * Includes reports
+ */
 include_once( 'includes/bv-view-report-functions.php' );
 include_once( 'includes/class-bv-reports-loader.php' );
 

@@ -3,7 +3,7 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://example.com
+ * @link       https://github.com/LittleMonks/buddy-views
  * @since      1.0.0
  *
  * @package    buddy-views
