@@ -17,7 +17,7 @@
  * Plugin URI:        https://github.com/LittleMonks/buddy-views
  * Description:       BuddyPress Profile views
  * Version:           1.0.0
- * Author:            LittleMonks
+ * Author:            littlemonks, dipesh.kakadiya, mehulkaklotar, pareshradadiya, utkarshpatel
  * Author URI:        https://github.com/LittleMonks
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
