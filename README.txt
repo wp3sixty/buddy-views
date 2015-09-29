@@ -29,8 +29,6 @@ e.g.
 
 An answer to that question.
 
-== Screenshots ==
-
 == Changelog ==
 
 = 1.0.0 (Beta) =
