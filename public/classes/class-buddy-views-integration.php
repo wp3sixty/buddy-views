@@ -26,8 +26,8 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 	class Buddy_Views_Integration {
 
 		public function __construct() {
-			Buddy_Views::$loader->add_action( 'bp_after_member_header', $this, 'record_view_log' );
-			Buddy_Views::$loader->add_action( 'bp_before_member_header_meta', $this, 'show_view_counter' );
+			Buddy_Views::$loader->add_action( 'bp_before_member_header_meta', $this, 'record_view_log', 10 );
+			Buddy_Views::$loader->add_action( 'bp_before_member_header_meta', $this, 'show_view_counter', 20 );
 			Buddy_Views::$loader->add_action( 'bp_actions', $this, 'profile_subnav_item' );
 			Buddy_Views::$loader->add_action( 'bp_setup_globals', $this, 'setup_global' );
 		}
@@ -216,7 +216,9 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 		}
 
 		public function profile_subnav_item() {
-			global $bp, $wp_admin_bar;;
+			global $bp, $wp_admin_bar;
+
+
 
 			$slug = buddypress()->profile->slug;
 
@@ -236,21 +238,23 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 				'slug'            => 'my-profile-view',
 				'parent_url'      => $friends_link,
 				'parent_slug'     => $slug,
-				'screen_function' => array( $this, 'xprofile_screen_profile_views' )
+				'screen_function' => array( $this, 'xprofile_screen_profile_views' ),
 			);
-
-
-			$admin_nav = array(
-				'parent' => 'my-account-' . $bp->profile->id,
-				'id'     => 'my-account-' . $bp->profile->id . '-my-profile-view',
-				'title'  => _x( 'My profile views', 'My Account Friends menu sub nav', 'bv' ),
-				'href'   => trailingslashit( $friends_link . 'my-profile-view' )
-			);
-
 
 			bp_core_new_subnav_item( $subnav_args );
 
-			$wp_admin_bar->add_menu( $admin_nav );
+			if ( is_object( $wp_admin_bar ) ) {
+
+				$admin_nav = array(
+					'parent' => 'my-account-' . $bp->profile->id,
+					'id'     => 'my-account-' . $bp->profile->id . '-my-profile-view',
+					'title'  => _x( 'My profile views', 'My Account Friends menu sub nav', 'bv' ),
+					'href'   => trailingslashit( $friends_link . 'my-profile-view' ),
+				);
+
+				$wp_admin_bar->add_menu( $admin_nav );
+			}
+
 		}
 
 		public function xprofile_screen_profile_views() {
