@@ -29,6 +29,23 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 			Buddy_Views::$loader->add_action( 'bp_after_member_header', $this, 'record_view_log' );
 			Buddy_Views::$loader->add_action( 'bp_before_member_header_meta', $this, 'show_view_counter' );
 			Buddy_Views::$loader->add_action( 'bp_actions', $this, 'profile_subnav_item' );
+			Buddy_Views::$loader->add_action( 'bp_setup_globals', $this, 'setup_global' );
+		}
+
+		/**
+		 * Add bv_profile in global variable for notification callback
+		 */
+		public function setup_global() {
+			global $bp;
+			$bp->bv_profile_view                               = new stdClass();
+			$bp->bv_profile_view->id                           = 'bv_profile_view';
+			$bp->bv_profile_view->slug                         = 'bv_profile_view';
+			$bp->bv_profile_view->notification_callback        = array(
+				$this,
+				'view_profile_notification_format'
+			); //this is a function which gets notifications needs to render
+			$bp->active_components[ $bp->bv_profile_view->id ] = $bp->bv_profile_view->id;
+			do_action( 'bv_profile_view_setup_globals' );
 		}
 
 		/**
@@ -70,8 +87,107 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 				);
 
 				$bv_views_log_model->add_view_log( $data );
+				$this->add_notification( array(
+					'user_id'           => $displayed_user_id,
+					'item_id'           => $current_user_id,
+					'secondary_item_id' => 0,
+					'component_name'    => 'bv_profile_view',
+					'component_action'  => 'profile_view',
+					'date_notified'     => bp_core_current_time(),
+					'is_new'            => 1,
+				) );
 			}
 
+		}
+
+		/**
+		 * Add notification to bbpress
+		 * @param $args
+		 */
+		public function add_notification( $args ) {
+			$notification_id = bp_notifications_add_notification( $args );
+		}
+
+		/**
+		 * Render notification string.
+		 *
+		 * @param $action
+		 * @param $item_id
+		 * @param $secondary_item_id
+		 * @param $total_items
+		 * @param string $format
+		 *
+		 * @return mixed|void
+		 */
+		public function view_profile_notification_format( $action, $item_id, $secondary_item_id, $total_items, $format = 'string' ) {
+
+			switch ( $action ) {
+				case 'profile_view':
+					$user_viewed          = $item_id;
+					$at_user_viewed_link  = bp_core_get_userlink( $user_viewed, false, true );
+					$at_user_viewed_title = sprintf( __( '@%s Viewed', BUDDY_VIEWS_TEXT_DOMAIN ), bp_get_loggedin_user_username() );
+					$amount               = 'single';
+
+					if ( (int) $total_items > 1 ) {
+						$text   = sprintf( __( 'You have %1$d new profile view', BUDDY_VIEWS_TEXT_DOMAIN ), (int) $total_items );
+						$amount = 'multiple';
+					} else {
+						$user_fullname = bp_core_get_user_displayname( $user_viewed );
+						$text          = sprintf( __( '%1$s viewed your profile', BUDDY_VIEWS_TEXT_DOMAIN ), $user_fullname );
+					}
+					break;
+			}
+
+			if ( 'string' == $format ) {
+
+				/**
+				 * Filters the @viewed notification for the string format.
+				 *
+				 * This is a variable filter that is dependent on how many items
+				 * need notified about. The two possible hooks are bp_activity_single_profile_view_notification
+				 * or bp_activity_multiple_profile_view_notification.
+				 *
+				 * @param string $string HTML anchor tag for the mention.
+				 * @param string $at_user_viewed_link The permalink for the mention.
+				 * @param int $total_items How many items being notified about.
+				 * @param int $user_viewed ID of the user who viewed.
+				 */
+				$return = apply_filters( 'bp_activity_' . $amount . '_profile_view_notification', '<a href="' . esc_url( $at_user_viewed_link ) . '" title="' . esc_attr( $at_user_viewed_title ) . '">' . esc_html( $text ) . '</a>', $at_user_viewed_link, (int) $total_items, $user_viewed );
+			} else {
+
+				/**
+				 * Filters the @viewed notification for any non-string format.
+				 *
+				 * This is a variable filter that is dependent on how many items need notified about.
+				 * The two possible hooks are bp_activity_single_profile_view_notification
+				 * or bp_activity_multiple_profile_view_notification.
+				 *
+				 * @since 1.5.0
+				 *
+				 * @param array $array Array holding the content and permalink for the mention notification.
+				 * @param string $at_user_viewed_link The permalink for the mention.
+				 * @param int $total_items How many items being notified about.
+				 * @param int $user_viewed ID of the user who viewed profile.
+				 */
+				$return = apply_filters( 'bp_activity_' . $amount . '_profile_view_notification', array(
+					'text' => $text,
+					'link' => $at_user_viewed_link
+				), $at_user_viewed_link, (int) $total_items, $user_viewed );
+			}
+
+			/**
+			 * Fires right before returning the formatted activity notifications.
+			 *
+			 * @since 1.2.0
+			 *
+			 * @param string $action The type of activity item.
+			 * @param int $item_id The activity ID.
+			 * @param int $secondary_item_id @mention mentioner ID.
+			 * @param int $total_items Total amount of items to format.
+			 */
+			do_action( 'profile_view_format_notifications', $action, $item_id, $secondary_item_id, $total_items );
+
+			return $return;
 		}
 
 		/**
@@ -102,7 +218,7 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 		public function profile_subnav_item() {
 			global $bp, $wp_admin_bar;;
 
-			$slug = bp_get_profile_slug();
+			$slug = buddypress()->profile->slug;
 
 			// Determine user to use
 			if ( bp_displayed_user_domain() ) {
@@ -144,7 +260,7 @@ if ( ! class_exists( 'Buddy_Views_Integration' ) ) {
 
 
 			$profile_view_report = new Rt_Reports( 'profile-view' );
-			$bv_reports = BV_Reports_Loader::factory();
+			$bv_reports          = BV_Reports_Loader::factory();
 
 		}
 
