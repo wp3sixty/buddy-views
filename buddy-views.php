@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://github.com/LittleMonks/buddy-views
- * @since             1.0.0
+ * @since             1.0.1
  * @package           buddy-views
  *
  * @wordpress-plugin
  * Plugin Name:       Buddy Views
  * Plugin URI:        https://github.com/LittleMonks/buddy-views
  * Description:       BuddyPress Profile views
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            littlemonks, dipesh.kakadiya, mehulkaklotar, pareshradadiya, utkarshpatel
  * Author URI:        https://github.com/LittleMonks
  * License:           GPL-2.0+
@@ -32,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 
 if ( ! defined( 'BUDDY_VIEWS_VERSION' ) ) {
-	define( 'BUDDY_VIEWS_VERSION', '1.0.0' );
+	define( 'BUDDY_VIEWS_VERSION', '1.0.1' );
 }
 
 if ( ! defined( 'BUDDY_VIEWS_TEXT_DOMAIN' ) ) {
