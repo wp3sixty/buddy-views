@@ -3,7 +3,7 @@ Contributors: littlemonks, dipesh.kakadiya, mehulkaklotar, pareshradadiya, utkar
 Tags: BuddyPress, Profile, Count, Views, Views Count, BuddyPress Profile Views, Profile Views, Buddy Views
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,7 +11,7 @@ Show profile view count for the buddypress user similar to linkedin.
 
 == Description ==
 
-Show profile view count for the buddypress user similar to linkedin.
+A buddypress plugin that shows profile view count for the buddypress user similar to linkedin.
 
 == Installation ==
 
@@ -23,13 +23,35 @@ e.g.
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
+= Automatic installation =
+
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of Buddy-views, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+
+In the search field type “Buddy Views” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
+
+= Manual installation =
+
+The manual installation method involves downloading our plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
+
+= Updating =
+
+Automatic updates should work like a charm; as always though, ensure you backup your site just in case.
+
+
 == Frequently Asked Questions ==
 
 = A question that someone might have =
 
 An answer to that question.
 
+== Screenshots ==
+
+1. Showing profile views just like google plus
+2. Showing notifications of profile view
+3. Listing notification
+4. Profile view graph
+
 == Changelog ==
 
-= 1.0.0 =
+= 1.0.1 =
 * Initial beta release
