@@ -13,36 +13,28 @@ Show profile view count for the buddypress user similar to linkedin.
 
 A buddypress plugin that shows profile view count for the buddypress user similar to linkedin.
 
+= Contributing to Buddy Views =
+If you have a patch, or stumbled upon an issue with Buddy Views, you can contribute this back to the code. Submit your pull request or issue on [Github buddy-views](https://github.com/LittleMonks/buddy-views/)
+
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+= From your WordPress dashboard =
 
-e.g.
+1. Visit 'Plugins > Add New'
+2. Search for 'Buddy Views'
+3. Activate Buddy Views from your Plugins page.
 
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+= From WordPress.org =
 
-= Automatic installation =
-
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of Buddy-views, log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
-
-In the search field type “Buddy Views” and click Search Plugins. Once you’ve found our plugin you can view details about it such as the the point release, rating and description. Most importantly of course, you can install it by simply clicking “Install Now”.
-
-= Manual installation =
-
-The manual installation method involves downloading our plugin and uploading it to your webserver via your favourite FTP application. The WordPress codex contains [instructions on how to do this here](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
-
-= Updating =
-
-Automatic updates should work like a charm; as always though, ensure you backup your site just in case.
-
+1. Download Buddy Views.
+2. Upload the 'buddy-views' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
+3. Activate Buddy Views from your Plugins page.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Will it just show profile counts?  =
 
-An answer to that question.
+No. It will also show who viewed your profile and graph of your profile view.
 
 == Screenshots ==
 
@@ -54,4 +46,10 @@ An answer to that question.
 == Changelog ==
 
 = 1.0.1 =
+* Show profile views on member page
+* Send notifications of profile view
+* Profile view graph
+* Screenshots and icons added
+
+= 1.0.0 =
 * Initial beta release
