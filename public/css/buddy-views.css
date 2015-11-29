@@ -4,6 +4,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 29 Nov, 2015, 1:50:07 PM
+    Created on : 29 Nov, 2015, 1:05:35 PM
     Author     : sanket
 */
+.bv-view-count {
+  display: block;
+  font-size: small;
+  line-height: 1.5;
+}

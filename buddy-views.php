@@ -24,41 +24,35 @@
  * Text Domain:       buddy-views
  * Domain Path:       /languages
  */
-
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if( !defined( 'WPINC' ) ) {
+    die;
 }
 
 
-if ( ! defined( 'BUDDY_VIEWS_VERSION' ) ) {
-	define( 'BUDDY_VIEWS_VERSION', '1.0.1' );
+if( !defined( 'BUDDY_VIEWS_VERSION' ) ) {
+    define( 'BUDDY_VIEWS_VERSION', '1.0.1' );
 }
 
-if ( ! defined( 'BUDDY_VIEWS_TEXT_DOMAIN' ) ) {
-	define( 'BUDDY_VIEWS_TEXT_DOMAIN', 'buddy-views' );
+if( !defined( 'BUDDY_VIEWS_PLUGIN_FILE' ) ) {
+    define( 'BUDDY_VIEWS_PLUGIN_FILE', __FILE__ );
 }
 
-if ( ! defined( 'BUDDY_VIEWS_PLUGIN_FILE' ) ) {
-	define( 'BUDDY_VIEWS_PLUGIN_FILE', __FILE__ );
+if( !defined( 'BUDDY_VIEWS_PATH' ) ) {
+    define( 'BUDDY_VIEWS_PATH', plugin_dir_path( __FILE__ ) );
 }
 
-if ( ! defined( 'BUDDY_VIEWS_PATH' ) ) {
-	define( 'BUDDY_VIEWS_PATH', plugin_dir_path( __FILE__ ) );
+if( !defined( 'BUDDY_VIEWS_URL' ) ) {
+    define( 'BUDDY_VIEWS_URL', plugin_dir_url( __FILE__ ) );
 }
 
-if ( ! defined( 'BUDDY_VIEWS_URL' ) ) {
-	define( 'BUDDY_VIEWS_URL', plugin_dir_url( __FILE__ ) );
+if( !defined( 'BUDDY_VIEWS_BASE_NAME' ) ) {
+    define( 'BUDDY_VIEWS_BASE_NAME', plugin_basename( __FILE__ ) );
 }
 
-if ( ! defined( 'BUDDY_VIEWS_BASE_NAME' ) ) {
-	define( 'BUDDY_VIEWS_BASE_NAME', plugin_basename( __FILE__ ) );
+if( !defined( 'BUDDY_VIEWS_PATH_TEMPLATES' ) ) {
+    define( 'BUDDY_VIEWS_PATH_TEMPLATES', plugin_dir_path( __FILE__ ) . 'public/templates/' );
 }
-
-if ( ! defined( 'BUDDY_VIEWS_PATH_TEMPLATES' ) ) {
-	define( 'BUDDY_VIEWS_PATH_TEMPLATES', plugin_dir_path( __FILE__ ) . 'public/templates/' );
-}
-
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-plugin-name-activator.php
@@ -67,12 +61,11 @@ if ( ! defined( 'BUDDY_VIEWS_PATH_TEMPLATES' ) ) {
  * @author   Dipesh <dipesh.kakadiya111@gmail.com>
  */
 function activate_plugin_name() {
-	require_once BUDDY_VIEWS_PATH . 'includes/class-buddy-views-activator.php';
-	Buddy_Views_Activator::activate();
+    require_once BUDDY_VIEWS_PATH . 'includes/class-buddy-views-activator.php';
+    Buddy_Views_Activator::activate();
 }
 
 register_activation_hook( BUDDY_VIEWS_PLUGIN_FILE, 'activate_plugin_name' );
-
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-plugin-name-deactivator.php
@@ -81,8 +74,8 @@ register_activation_hook( BUDDY_VIEWS_PLUGIN_FILE, 'activate_plugin_name' );
  * @author   Dipesh <dipesh.kakadiya111@gmail.com>
  */
 function deactivate_plugin_name() {
-	require_once BUDDY_VIEWS_PATH . 'includes/class-buddy-views-deactivator.php';
-	Buddy_Views_Deactivator::deactivate();
+    require_once BUDDY_VIEWS_PATH . 'includes/class-buddy-views-deactivator.php';
+    Buddy_Views_Deactivator::deactivate();
 }
 
 register_deactivation_hook( BUDDY_VIEWS_PLUGIN_FILE, 'deactivate_plugin_name' );
@@ -103,7 +96,6 @@ require BUDDY_VIEWS_PATH . 'includes/lib/rt-lib.php';
  */
 include_once( 'includes/bv-view-report-functions.php' );
 include_once( 'includes/class-bv-reports-loader.php' );
-
 /**
  * Begins execution of the plugin.
  *
@@ -115,6 +107,7 @@ include_once( 'includes/class-bv-reports-loader.php' );
  * @author   Dipesh <dipesh.kakadiya111@gmail.com>
  */
 function run_buddy_views() {
-	$buddy_views = Buddy_Views::instance();
+    $buddy_views = Buddy_Views::instance();
 }
+
 run_buddy_views();
