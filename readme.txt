@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: littlemonks, dipesh.kakadiya, mehulkaklotar, pareshradadiya, utkarshpatel
+Contributors: littlemonks, dipesh.kakadiya, mehulkaklotar, pareshradadiya, utkarshpatel, sanket.parmar
 Tags: BuddyPress, Profile, Count, Views, Views Count, BuddyPress Profile Views, Profile Views, Buddy Views
 Requires at least: 4.0
 Tested up to: 4.3
