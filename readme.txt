@@ -3,7 +3,7 @@ Contributors: littlemonks, dipesh.kakadiya, mehulkaklotar, pareshradadiya, utkar
 Tags: BuddyPress, Profile, Count, Views, Views Count, BuddyPress Profile Views, Profile Views, Buddy Views
 Requires at least: 4.0
 Tested up to: 4.3
-Stable tag: 1.0.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,10 @@ No. It will also show who viewed your profile and graph of your profile view.
 4. Profile view graph
 
 == Changelog ==
+
+= 1.1 =
+* Language support
+* CSS minified
 
 = 1.0.1 =
 * Show profile views on member page
