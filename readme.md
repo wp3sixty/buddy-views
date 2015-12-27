@@ -4,11 +4,11 @@
 ![Banner](assets/banner-1544x500.png)
 Show profile view count for the buddypress user similar to linkedin.
 
-**Contributors:** [littlemonks](https://profiles.wordpress.org/littlemonks), [dipesh.kakadiya](https://profiles.wordpress.org/dipesh.kakadiya), [mehulkaklotar](https://profiles.wordpress.org/mehulkaklotar), [pareshradadiya](https://profiles.wordpress.org/pareshradadiya), [utkarshpatel](https://profiles.wordpress.org/utkarshpatel)  
+**Contributors:** [littlemonks](https://profiles.wordpress.org/littlemonks), [dipesh.kakadiya](https://profiles.wordpress.org/dipesh.kakadiya), [mehulkaklotar](https://profiles.wordpress.org/mehulkaklotar), [pareshradadiya](https://profiles.wordpress.org/pareshradadiya), [utkarshpatel](https://profiles.wordpress.org/utkarshpatel), [sanket.parmar](https://profiles.wordpress.org/sanket.parmar)  
 **Tags:** [BuddyPress](https://wordpress.org/plugins/tags/BuddyPress), [Profile](https://wordpress.org/plugins/tags/Profile), [Count](https://wordpress.org/plugins/tags/Count), [Views](https://wordpress.org/plugins/tags/Views), [Views Count](https://wordpress.org/plugins/tags/Views Count), [BuddyPress Profile Views](https://wordpress.org/plugins/tags/BuddyPress Profile Views), [Profile Views](https://wordpress.org/plugins/tags/Profile Views), [Buddy Views](https://wordpress.org/plugins/tags/Buddy Views)  
 **Requires at least:** 4.0  
 **Tested up to:** 4.3  
-**Stable tag:** 1.0.1  
+**Stable tag:** 1.1  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 
 ## Description ##
@@ -56,6 +56,10 @@ No. It will also show who viewed your profile and graph of your profile view.
 ![Profile view graph](assets/screenshot-4.png)
 
 ## Changelog ##
+
+### 1.1 ###
+* Language support
+* CSS minified
 
 ### 1.0.1 ###
 * Show profile views on member page
