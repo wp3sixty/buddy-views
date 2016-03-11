@@ -100,7 +100,7 @@ if( !class_exists( 'Buddy_Views_Integration' ) ) {
          * @param $args
          */
         public function add_notification( $args ) {
-            $notification_id = bp_notifications_add_notification( $args );
+            if(function_exists("bp_notifications_add_notification")) $notification_id = bp_notifications_add_notification( $args );
         }
 
         /**
